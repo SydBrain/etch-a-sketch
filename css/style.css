@@ -87,6 +87,10 @@ main {
   padding: 4rem 4rem 0 4rem;
 }
 
+.toy-container.shaking {
+  animation: shake 0.5s;
+}
+
 .grid-border {
   border: solid 4px #d95d26;
   background: transparent;
@@ -106,12 +110,17 @@ main {
   transition: 500ms ease-in-out;
 }
 
+
 .grid-item {
   background-color: #fff;
   border: 1px solid #eee;
   height: 100%;
   width: 100%;
-  transition: 200ms ease-in-out;
+  transition: 300ms;
+}
+
+.grid-item.erasing {
+  transition: background-color 0.5s ease-in-out;
 }
 
 .toy-controls {
@@ -138,4 +147,26 @@ main {
 .toy-controls button:active {
   transform: translateY(4px);
   box-shadow: 0 2px #999;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }

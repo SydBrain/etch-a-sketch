@@ -3,14 +3,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentGridSize;
     generateGrid(16);
 
+    // DOM Elements
+    const gridContainer = document.querySelector('#grid-container');
+    const toyContainer = document.querySelector('.toy-container');
+    const eraseButton = document.querySelector('#erase-btn');
+
     // Event Listeners
-    document.getElementById("grid-container").addEventListener("mouseover", function (event) {
+    gridContainer.addEventListener("mouseover", function (event) {
         if (event.target.classList.contains("grid-item")) {
             event.target.style.backgroundColor = "gray";
         }
+
     });
 
-    document.getElementById("erase-btn").addEventListener('click', () => generateGrid(currentGridSize));
+    eraseButton.addEventListener('click', () => {
+        const gridElements = document.querySelectorAll('.grid-item');
+        gridElements.forEach(element => {
+            element.style.backgroundColor = "#fff";
+            element.classList.add("erasing");
+        });
+
+        toyContainer.classList.add("shaking");
+        setTimeout(() => {
+            gridElements.forEach(element => element.classList.remove("erasing"));
+            toyContainer.classList.remove("shaking");
+        }, 500);
+    });
 
     function generateGrid(size) {
         resetGrid();
