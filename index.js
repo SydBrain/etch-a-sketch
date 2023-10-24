@@ -1,17 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // DOM elements
-    const [gridContainer] = ['#grid_container'].map(selector => document.querySelector(selector));
+    generateGrid(16);
 
-    generateGrid(16, 16);
-
-    function generateGrid(cols, rows) {
-        gridContainer.style.setProperty('--grid-rows', rows);
-        gridContainer.style.setProperty('--grid-cols', cols);
-        for (let c = 0; c < (rows * cols); c++) {
-            let cell = document.createElement('div');
-            cell.classList.add('grid-item');
-            gridContainer.appendChild(cell);
+    document.getElementById("grid-container").addEventListener("mouseover", function (event) {
+        if (event.target.classList.contains("grid-item")) {
+            event.target.style.backgroundColor = "gray";
         }
-    }
+    });
 })
+
+function generateGrid(size) {
+    resetGrid();
+
+    const gridContainer = document.getElementById("grid-container");
+    gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+    for (let i = 0; i < size * size; i++) {
+        const gridItem = document.createElement("div");
+        gridItem.classList.add("grid-item");
+        gridContainer.appendChild(gridItem);
+    }
+}
+
+function resetGrid() {
+    const gridElements = document.querySelectorAll('.grid-item');
+    gridElements.forEach(element => element.remove());
+}
