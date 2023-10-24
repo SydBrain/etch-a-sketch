@@ -1,14 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 :root {
-  --primary-color: #4A90E2;
-  /* Ocean Blue */
   --secondary-color: #D4D4D4;
-  /* Light Gray */
   --background-color: #F2F2F2;
-  /* Soft Gray */
-  --accent-color: #7E8C8D;
-  /* Slate Gray */
-  --text-color: #2C3E50;
-  /* Dark Blue */
+  --accent-color: #515151;
+  --text-color: #343434;
 }
 
 body,
@@ -16,6 +12,7 @@ html {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
+  font-size: 14px;
 }
 
 *,
@@ -31,6 +28,7 @@ html {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background: linear-gradient(to right, #e0f7fa, #f0f0f0);
 }
 
 img,
@@ -70,11 +68,18 @@ main {
   height: 100vh;
 }
 
+h1 {
+  font-family: 'Lobster', sans-serif;
+  color: white;
+  margin: 1rem;
+}
+
 .toy-container {
-  background-color: var(--primary-color);
+  background: linear-gradient(to right, #E74C3C, #ff7b6c);
   border: solid 4px var(--accent-color);
   border-radius: 20px;
-  padding: 4rem 4rem 0 4rem;
+  padding: 1rem 4rem 1rem 4rem;
+  text-align: center;
 }
 
 .toy-container.shaking {
@@ -115,34 +120,36 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
-.toy-controls button,
-.toy-controls>div>button {
-  padding: 1rem;
-  border: solid 0px 1px 2px 1px;
+.btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--accent-color);
   border-radius: 10px;
   color: var(--text-color);
   background-color: white;
-  box-shadow: 0 4px #999;
+  font-size: 16px;
+  font-weight: bold;
   transition: transform 0.1s, box-shadow 0.1s;
+  font-family: 'Arial', sans-serif;
 }
 
-.toy-controls button:hover,
-.toy-controls>div>button:hover {
+
+.btn:hover {
   cursor: pointer;
 }
 
-.toy-controls button:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px #999;
+.btn:active {
+  transform: translateY(2px);
+  transition: transform 0.1s;
 }
 
 .size-controls {
   display: flex;
   gap: 1rem;
 }
+
 
 @keyframes shake {
   0% {
