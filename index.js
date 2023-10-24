@@ -1,19 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     let gridSize = 16;
+
     const gridContainer = document.querySelector("#grid-container");
     const toyContainer = document.querySelector(".toy-container");
     const eraseButton = document.querySelector("#erase-btn");
+    const sizeControls = document.querySelector(".size-controls");
 
     generateGrid(gridSize);
 
+    // Event Listeners
     gridContainer.addEventListener("mouseover", function (event) {
         if (event.target.classList.contains("grid-item")) {
             event.target.style.backgroundColor = "gray";
         }
     });
 
-    eraseButton.addEventListener('click', erase);
+    eraseButton.addEventListener('click', () => {
+        erase();
+        shakeToy();
+    });
+    sizeControls.addEventListener('click', (event) => {
+        if (event.target.value) {
+            handleSizeSelection(event.target.value)
+        }
+    });
 
+    // Main Logic
     function generateGrid(size) {
         resetGrid();
 
@@ -31,6 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gridElements.forEach(element => element.remove());
     }
 
+    function handleSizeSelection(newGridSize) {
+        erase();
+        generateGrid(newGridSize);
+    }
+
     function erase() {
         const gridElements = document.querySelectorAll('.grid-item');
         gridElements.forEach(element => {
@@ -40,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.classList.remove("erasing");
             }, 500);
         });
-        shakeToy();
     }
 
     function shakeToy() {
