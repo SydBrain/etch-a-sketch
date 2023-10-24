@@ -77,6 +77,21 @@ h6 {
 main {
   display: grid;
   place-items: center;
+  height: 100vh;
+}
+
+.toy-container {
+  background-color: #ec652b;
+  border: solid 4px #ee7e41;
+  border-radius: 20px;
+  padding: 4rem 4rem 0 4rem;
+}
+
+.grid-border {
+  border: solid 4px #d95d26;
+  background: transparent;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 #grid-container {
@@ -85,15 +100,10 @@ main {
   grid-gap: 1px;
   width: 90vw;
   height: 90vw;
-  /* Make it square */
   max-width: 600px;
-  /* Optional: Maximum width you desire */
   max-height: 600px;
-  /* Optional: Corresponding maximum height */
-  margin: 5vh auto;
-  /* Centers the grid */
   background-color: #ddd;
-  /* A background color to show the gaps */
+  transition: 500ms ease-in-out;
 }
 
 .grid-item {
@@ -101,4 +111,31 @@ main {
   border: 1px solid #eee;
   height: 100%;
   width: 100%;
+  transition: 200ms ease-in-out;
+}
+
+.toy-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.toy-controls button {
+  padding: 1rem;
+  border: solid 0px 1px 2px 1px;
+  border-radius: 10px;
+  color: #86a6c2;
+  background-color: white;
+  box-shadow: 0 4px #999;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.toy-controls button:hover {
+  cursor: pointer;
+}
+
+.toy-controls button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px #999;
 }
